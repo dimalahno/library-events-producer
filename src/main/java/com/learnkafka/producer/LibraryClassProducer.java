@@ -3,6 +3,7 @@ package com.learnkafka.producer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learnkafka.domain.LibraryEvent;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
@@ -12,17 +13,12 @@ import java.util.concurrent.ExecutionException;
 
 @Component
 @Slf4j
+@AllArgsConstructor
 public class LibraryClassProducer {
 
     private final KafkaTemplate<Integer, String> kafkaTemplate;
 
     private final ObjectMapper mapper;
-
-    public LibraryClassProducer(KafkaTemplate<Integer, String> kafkaTemplate,
-                                ObjectMapper mapper) {
-        this.kafkaTemplate = kafkaTemplate;
-        this.mapper = mapper;
-    }
 
     public void sendLibraryEvent(LibraryEvent libraryEvent) throws JsonProcessingException, ExecutionException, InterruptedException {
 

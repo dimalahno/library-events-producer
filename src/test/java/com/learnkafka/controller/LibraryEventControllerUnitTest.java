@@ -3,7 +3,7 @@ package com.learnkafka.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learnkafka.domain.Book;
 import com.learnkafka.domain.LibraryEvent;
-import com.learnkafka.producer.LibraryClassProducer;
+import com.learnkafka.producer.LibraryEventProducer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -26,7 +26,7 @@ public class LibraryEventControllerUnitTest {
     MockMvc mockMvc;
 
     @MockBean
-    LibraryClassProducer libraryClassProducer;
+    LibraryEventProducer libraryEventProducer;
 
     ObjectMapper objectMapper = new ObjectMapper();
 
@@ -46,7 +46,7 @@ public class LibraryEventControllerUnitTest {
 
         var json = objectMapper.writeValueAsString(libraryEvent);
 
-        doNothing().when(libraryClassProducer).sendLibraryEvent_Approach2(isA(LibraryEvent.class));
+        doNothing().when(libraryEventProducer).sendLibraryEvent_Approach2(isA(LibraryEvent.class));
 
         // when
         mockMvc.perform(post("/v1/libraryevent")
@@ -65,7 +65,7 @@ public class LibraryEventControllerUnitTest {
 
         var json = objectMapper.writeValueAsString(libraryEvent);
 
-        doNothing().when(libraryClassProducer).sendLibraryEvent_Approach2(isA(LibraryEvent.class));
+        doNothing().when(libraryEventProducer).sendLibraryEvent_Approach2(isA(LibraryEvent.class));
 
         // when
         mockMvc.perform(post("/v1/libraryevent")
@@ -91,7 +91,7 @@ public class LibraryEventControllerUnitTest {
 
         var json = objectMapper.writeValueAsString(libraryEvent);
 
-        doNothing().when(libraryClassProducer).sendLibraryEvent_Approach2(isA(LibraryEvent.class));
+        doNothing().when(libraryEventProducer).sendLibraryEvent_Approach2(isA(LibraryEvent.class));
 
         // when
         mockMvc.perform(put("/v1/libraryevent")
@@ -116,7 +116,7 @@ public class LibraryEventControllerUnitTest {
 
         var json = objectMapper.writeValueAsString(libraryEvent);
 
-        doNothing().when(libraryClassProducer).sendLibraryEvent_Approach2(isA(LibraryEvent.class));
+        doNothing().when(libraryEventProducer).sendLibraryEvent_Approach2(isA(LibraryEvent.class));
 
         // when
         mockMvc.perform(put("/v1/libraryevent")

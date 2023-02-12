@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutionException;
 @Component
 @Slf4j
 @AllArgsConstructor
-public class LibraryClassProducer {
+public class LibraryEventProducer {
 
     private final String TOPIC = "library-events";
 

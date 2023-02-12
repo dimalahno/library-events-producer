@@ -3,7 +3,7 @@ package com.learnkafka.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.learnkafka.domain.LibraryEvent;
 import com.learnkafka.domain.LibraryEventType;
-import com.learnkafka.producer.LibraryClassProducer;
+import com.learnkafka.producer.LibraryEventProducer;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ import java.util.concurrent.ExecutionException;
 @Slf4j
 public class LibraryEventsController {
 
-    private final LibraryClassProducer producer;
+    private final LibraryEventProducer producer;
 
     @PostMapping("/v1/libraryevent")
     public ResponseEntity<LibraryEvent> postLibraryEvent(@RequestBody @Validated LibraryEvent libraryEvent) throws JsonProcessingException {

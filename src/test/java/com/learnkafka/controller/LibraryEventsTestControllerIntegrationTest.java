@@ -78,7 +78,7 @@ public class LibraryEventsTestControllerIntegrationTest {
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         ConsumerRecord<Integer, String> consumerRecord =  KafkaTestUtils.getSingleRecord(consumer,"library-events");
         //Thread.sleep(3000);
-        String expectedRecord ="{\"libraryEventId\":null,\"book\":{\"bookId\":123,\"bookName\":\"Kafka using Spring Boot\",\"bookAuthor\":\"Dima\"},\"type\":\"NEW\"}";
+        String expectedRecord ="{\"libraryEventId\":null,\"type\":\"NEW\",\"book\":{\"bookId\":123,\"bookName\":\"Kafka using Spring Boot\",\"bookAuthor\":\"Dima\"}}";
         String value = consumerRecord.value();
         assertEquals(expectedRecord, value);
     }

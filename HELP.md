@@ -14,4 +14,7 @@ cd ..\..\kafka_2.12-3.3.1\bin\windows
 
 kafka-topics.bat --create --topic test-topic-replicated -zookeeper localhost:2181 --replication-factor 3 --partitions 3
 
+kafka-topics.bat --create --topic library-events.DLT --replication-factor 1 --partitions 4 --bootstrap-server localhost:9092
+kafka-topics.bat --create --topic library-events.RETRY --replication-factor 1 --partitions 4 --bootstrap-server localhost:9092
+
 kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic library-events
